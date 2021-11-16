@@ -1,0 +1,5 @@
+- name: hello endpoint returns 200
+  endpoint:
+    function: hello
+  response:
+    status: 200

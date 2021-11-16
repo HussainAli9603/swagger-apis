@@ -1,0 +1,29 @@
+service: aws-node-http-api-project
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: "20201221"
+
+functions:
+  hello:
+    handler: functions/helloWorld/helloFunction.hello
+    events:
+      - httpApi:
+          path: /
+          method: post
+          cors: true
+     
+
+
+  # helloHussain:
+  #   handler: functions/helloWorld/hell2Function.hello
+  #   events:
+  #     - httpApi:
+  #         path: /create
+  #         method: post
+
+plugins:
+  - serverless-webpack
+  - serverless-offline

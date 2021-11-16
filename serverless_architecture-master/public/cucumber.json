@@ -1,0 +1,82 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "helloworld-service;get-helloworld",
+        "keyword": "Scenario Outline",
+        "line": 4,
+        "name": "get helloWorld",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I make a GET request to \"http://localhost:3000/\"",
+            "match": {
+              "location": "test\\src\\steps\\helloWorld.steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 17000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I recieve a response",
+            "match": {
+              "location": "test\\src\\steps\\helloWorld.steps.js:14"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 36000000,
+              "error_message": "Error: connect ECONNREFUSED 127.0.0.1:3000\n    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1142:16)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should get response 200",
+            "match": {
+              "location": "test\\src\\steps\\helloWorld.steps.js:18"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@helloworld-service",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "helloworld-service",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "HelloWorld Service",
+    "tags": [
+      {
+        "name": "@helloworld-service",
+        "line": 1
+      }
+    ],
+    "uri": "test\\src\\features\\helloWorld.feature"
+  }
+]
