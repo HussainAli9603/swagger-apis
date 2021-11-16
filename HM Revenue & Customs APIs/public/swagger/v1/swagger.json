@@ -1,0 +1,958 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"Meta": {
+				"properties": {
+					"publisher": {
+						"type": "string"
+					},
+					"licence": {
+						"type": "string"
+					},
+					"documentation": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					},
+					"comment": {
+						"type": "string"
+					},
+					"hasFormat": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"limit": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"publisher",
+					"licence",
+					"documentation",
+					"version",
+					"comment",
+					"hasFormat",
+					"limit"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Allergen": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"altLabel": {
+						"type": "string"
+					},
+					"label": {
+						"type": "string"
+					},
+					"narrower": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"notation": {
+						"type": "string"
+					},
+					"riskStatement": {
+						"type": "string"
+					},
+					"broader": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"label",
+					"notation",
+					"riskStatement"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Problem": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"allergen": {
+						"items": {
+							"$ref": "#/components/schemas/Allergen"
+						},
+						"type": "array"
+					},
+					"riskStatement": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"riskStatement"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BatchDescription": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"batchCode": {
+						"type": "string"
+					},
+					"bestBeforeDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"bestBeforeDescription": {
+						"type": "string"
+					},
+					"useByDescription": {
+						"type": "string"
+					},
+					"lotNumber": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ProductDetail": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"batchDescription": {
+						"items": {
+							"$ref": "#/components/schemas/BatchDescription"
+						},
+						"type": "array"
+					},
+					"packSizeDescription": {
+						"type": "string"
+					},
+					"productName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"batchDescription",
+					"productName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Business": {
+				"properties": {
+					"commonName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"commonName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Label": {
+				"enum": [
+					"Published"
+				],
+				"type": "string"
+			},
+			"Status": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"label": {
+						"$ref": "#/components/schemas/Label"
+					}
+				},
+				"required": [
+					"id",
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ItemFull": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"smStext": {
+						"type": "string"
+					},
+					"actionTaken": {
+						"type": "string"
+					},
+					"alertURL": {
+						"type": "string"
+					},
+					"consumerAdvice": {
+						"type": "string"
+					},
+					"created": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"description": {
+						"type": "string"
+					},
+					"modified": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"notation": {
+						"type": "string"
+					},
+					"problem": {
+						"items": {
+							"$ref": "#/components/schemas/Problem"
+						},
+						"type": "array"
+					},
+					"productDetails": {
+						"items": {
+							"$ref": "#/components/schemas/ProductDetail"
+						},
+						"type": "array"
+					},
+					"relatedMedia": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"reportingBusiness": {
+						"$ref": "#/components/schemas/Business"
+					},
+					"shortTitle": {
+						"type": "string"
+					},
+					"shortURL": {
+						"type": "string"
+					},
+					"status": {
+						"$ref": "#/components/schemas/Status"
+					},
+					"title": {
+						"type": "string"
+					},
+					"twitterText": {
+						"type": "string"
+					},
+					"type": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"otherBusiness": {
+						"anyOf": [
+							{
+								"items": {
+									"$ref": "#/components/schemas/Business"
+								},
+								"type": "array"
+							},
+							{
+								"$ref": "#/components/schemas/Business"
+							}
+						]
+					}
+				},
+				"required": [
+					"id",
+					"smStext",
+					"actionTaken",
+					"alertURL",
+					"consumerAdvice",
+					"created",
+					"description",
+					"modified",
+					"notation",
+					"problem",
+					"productDetails",
+					"reportingBusiness",
+					"shortTitle",
+					"shortURL",
+					"status",
+					"title",
+					"twitterText",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListAlertGetFullResponse": {
+				"properties": {
+					"meta": {
+						"$ref": "#/components/schemas/Meta"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/ItemFull"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"items"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReportingBusiness": {
+				"properties": {
+					"commonName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"commonName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ItemDefault": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"alertURL": {
+						"type": "string"
+					},
+					"created": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"modified": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"notation": {
+						"type": "string"
+					},
+					"problem": {
+						"items": {
+							"$ref": "#/components/schemas/Problem"
+						},
+						"type": "array"
+					},
+					"productDetails": {
+						"items": {
+							"$ref": "#/components/schemas/ProductDetail"
+						},
+						"type": "array"
+					},
+					"reportingBusiness": {
+						"$ref": "#/components/schemas/ReportingBusiness"
+					},
+					"shortTitle": {
+						"type": "string"
+					},
+					"status": {
+						"$ref": "#/components/schemas/Status"
+					},
+					"title": {
+						"type": "string"
+					},
+					"type": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"alertURL",
+					"created",
+					"modified",
+					"notation",
+					"problem",
+					"productDetails",
+					"reportingBusiness",
+					"shortTitle",
+					"status",
+					"title",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IListAlertGetDefaultResponse": {
+				"properties": {
+					"meta": {
+						"$ref": "#/components/schemas/Meta"
+					},
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/ItemDefault"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"meta",
+					"items"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"_VIEW": {
+				"description": "*************************      Enum Constants      ****************************************",
+				"enum": [
+					"default",
+					"full"
+				],
+				"type": "string"
+			},
+			"Link": {
+				"properties": {
+					"rel": {
+						"type": "string"
+					},
+					"href": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"rel",
+					"href"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Region": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"nameKey": {
+						"type": "string"
+					},
+					"code": {
+						"type": "string"
+					},
+					"links": {
+						"items": {
+							"$ref": "#/components/schemas/Link"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"nameKey",
+					"code",
+					"links"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MetaRegion": {
+				"properties": {
+					"dataSource": {
+						"type": "string"
+					},
+					"extractDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"itemCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"returncode": {
+						"type": "string"
+					},
+					"totalCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalPages": {
+						"type": "number",
+						"format": "double"
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"pageNumber": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"dataSource",
+					"extractDate",
+					"itemCount",
+					"returncode",
+					"totalCount",
+					"totalPages",
+					"pageSize",
+					"pageNumber"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IRegionDetailPaginationGetResponse": {
+				"properties": {
+					"regions": {
+						"items": {
+							"$ref": "#/components/schemas/Region"
+						},
+						"type": "array"
+					},
+					"meta": {
+						"$ref": "#/components/schemas/MetaRegion"
+					},
+					"links": {
+						"items": {
+							"$ref": "#/components/schemas/Link"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"regions",
+					"meta",
+					"links"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"name": "authorization",
+				"in": "header",
+				"bearerFormat": "JWT"
+			},
+			"apiKeyAuth": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "X-API-KEY"
+			}
+		}
+	},
+	"info": {
+		"title": "Food Standards Agency APIssssss",
+		"version": "v1",
+		"description": "The FSA Food Alerts API provides access to current and recent Food Alerts: Allergy Alerts (AA), Product Recall Information Notices (PRIN) and Food Alerts for Action (FAFA). It provides applications with the facility to list alerts matching some filter criterion, and to retrieve a description of an alert.",
+		"contact": {
+			"name": "Oraclo LTD",
+			"email": "admin@orcalo.co.uk",
+			"url": "https://orcalo.co.uk/"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/v1/foodalerts/id": {
+			"get": {
+				"operationId": "GetListAlerts",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/IListAlertGetFullResponse"
+										},
+										{
+											"$ref": "#/components/schemas/IListAlertGetDefaultResponse"
+										}
+									]
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"meta": {
+												"publisher": "string",
+												"licence": "string",
+												"documentation": "string",
+												"version": "string",
+												"comment": "string",
+												"hasFormat": [
+													"string"
+												],
+												"limit": 0
+											},
+											"items": [
+												{
+													"id": "string",
+													"smStext": "string",
+													"actionTaken": "string",
+													"alertURL": "string",
+													"consumerAdvice": "string",
+													"created": "2021-09-13T13:22:53.195Z",
+													"description": "string",
+													"modified": "2021-09-13T13:22:53.195Z",
+													"notation": "string",
+													"problem": [
+														{
+															"id": "string",
+															"allergen": [
+																{
+																	"id": "string",
+																	"altLabel": "string",
+																	"label": "string",
+																	"narrower": [
+																		"string"
+																	],
+																	"notation": "string",
+																	"riskStatement": "string",
+																	"broader": "string"
+																}
+															],
+															"riskStatement": "string"
+														}
+													],
+													"productDetails": [
+														{
+															"id": "string",
+															"batchDescription": [
+																{
+																	"id": "string",
+																	"batchCode": "string",
+																	"bestBeforeDate": "2021-09-13T13:22:53.195Z",
+																	"bestBeforeDescription": "string",
+																	"useByDescription": "string",
+																	"lotNumber": "string"
+																}
+															],
+															"packSizeDescription": "string",
+															"productName": "string"
+														}
+													],
+													"relatedMedia": [
+														"string"
+													],
+													"reportingBusiness": {
+														"commonName": "string"
+													},
+													"shortTitle": "string",
+													"shortURL": "string",
+													"status": {
+														"id": "string",
+														"label": "Published"
+													},
+													"title": "string",
+													"twitterText": "string",
+													"type": [
+														"string"
+													],
+													"otherBusiness": [
+														{
+															"commonName": "string"
+														}
+													]
+												}
+											]
+										}
+									},
+									"Example 2": {
+										"value": {
+											"meta": {
+												"publisher": "string",
+												"licence": "string",
+												"documentation": "string",
+												"version": "string",
+												"comment": "string",
+												"hasFormat": [
+													"string"
+												],
+												"limit": 0
+											},
+											"items": [
+												{
+													"id": "string",
+													"actionTaken": "string",
+													"alertURL": "string",
+													"consumerAdvice": "string",
+													"created": "2021-09-13T13:22:53.195Z",
+													"description": "string",
+													"modified": "2021-09-13T13:22:53.195Z",
+													"notation": "string",
+													"problem": [
+														{
+															"id": "string",
+															"allergen": [
+																{
+																	"id": "string",
+																	"altLabel": "string",
+																	"label": "string",
+																	"narrower": [
+																		"string"
+																	],
+																	"notation": "string",
+																	"riskStatement": "string",
+																	"broader": "string"
+																}
+															],
+															"riskStatement": "string"
+														}
+													],
+													"productDetails": [
+														{
+															"id": "string",
+															"batchDescription": [
+																{
+																	"id": "string",
+																	"batchCode": "string",
+																	"bestBeforeDate": "2021-09-13T13:22:53.195Z",
+																	"bestBeforeDescription": "string",
+																	"useByDescription": "string",
+																	"lotNumber": "string"
+																}
+															],
+															"packSizeDescription": "string",
+															"productName": "string"
+														}
+													],
+													"relatedMedia": [
+														"string"
+													],
+													"reportingBusiness": {
+														"commonName": "string"
+													},
+													"shortTitle": "string",
+													"shortURL": "string",
+													"status": {
+														"id": "string",
+														"label": "Published"
+													},
+													"title": "string",
+													"twitterText": "string",
+													"type": [
+														"string"
+													],
+													"otherBusiness": [
+														{
+															"commonName": "string"
+														}
+													]
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"summary": "List Alerts | List alerts changed since some point in time | Search for alerts matching some search term",
+				"tags": [
+					"Food Alerts"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Must be greater than <b>0</b>",
+						"in": "query",
+						"name": "_limit",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Must be <b>\"default\"</b> or <b>\"full\"</b>",
+						"in": "query",
+						"name": "_view",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/_VIEW"
+						}
+					},
+					{
+						"in": "query",
+						"name": "since",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/v1/regions/{pageNumber}/{pageSize}": {
+			"get": {
+				"operationId": "GetRegionDetailPagination",
+				"responses": {
+					"200": {
+						"description": "IRegionDetailPaginationGetResponse",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IRegionDetailPaginationGetResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"regions": [
+												{
+													"id": 1,
+													"name": "sample string 2",
+													"nameKey": "sample string 3",
+													"code": "sample string 4",
+													"links": [
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														},
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														},
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														}
+													]
+												},
+												{
+													"id": 1,
+													"name": "sample string 2",
+													"nameKey": "sample string 3",
+													"code": "sample string 4",
+													"links": [
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														},
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														},
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														}
+													]
+												},
+												{
+													"id": 1,
+													"name": "sample string 2",
+													"nameKey": "sample string 3",
+													"code": "sample string 4",
+													"links": [
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														},
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														},
+														{
+															"rel": "sample string 1",
+															"href": "sample string 2"
+														}
+													]
+												}
+											],
+											"meta": {
+												"dataSource": "sample string 1",
+												"extractDate": "2021-09-13T18:42:32.6249303+01:00",
+												"itemCount": 3,
+												"returncode": "sample string 4",
+												"totalCount": 5,
+												"totalPages": 6,
+												"pageSize": 7,
+												"pageNumber": 8
+											},
+											"links": [
+												{
+													"rel": "sample string 1",
+													"href": "sample string 2"
+												},
+												{
+													"rel": "sample string 1",
+													"href": "sample string 2"
+												},
+												{
+													"rel": "sample string 1",
+													"href": "sample string 2"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"summary": "Returns details of all regions, page parameters allow for page number and size specification.",
+				"tags": [
+					"Regions"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"description": "Must be greater than <b>0</b>",
+						"in": "path",
+						"name": "pageNumber",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "Must be greater than <b>0</b>",
+						"in": "path",
+						"name": "pageSize",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	],
+	"tags": [
+		{
+			"name": "Food Alerts",
+			"description": "Food Alert APIS"
+		},
+		{
+			"name": "Food Hygiene Rating",
+			"description": "Food Hygiene Rating API"
+		}
+	]
+}
