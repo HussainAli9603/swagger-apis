@@ -1,0 +1,39 @@
+{
+    "entryFile": "src/index.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "spec": {
+        "outputDirectory": "public",
+        "specVersion": 3,
+        "securityDefinitions": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "access_token",
+                "in": "query"
+            },
+            "jwt": {
+                "type": "http",
+                "scheme": "Bearer",
+                "name": "Authorization",
+                "in": "header"
+            },
+            "paths": {
+                "/region/upload-image": {
+                  "post": {
+                    "consumes": [
+                      "multipart/form-data"
+                    ],
+                    "parameters": [
+                      {
+                        "in": "formData",
+                        "name": "image",
+                        "required": true,
+                        "type": "file"
+                      }
+                    ]
+                  }
+                }
+              }
+
+        }
+    }
+}

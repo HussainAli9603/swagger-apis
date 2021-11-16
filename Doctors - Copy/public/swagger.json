@@ -1,0 +1,856 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"SaveUpdateResAdmin": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"psssword": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"email",
+					"psssword",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterReqAdmin": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"email",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResCategory": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"category": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"category"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Category": {
+				"properties": {
+					"title": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"title"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResActor": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Actors": {
+				"properties": {
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ActorData1": {
+				"properties": {
+					"_id": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaveUpdateResFilm": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"language": {
+						"type": "string"
+					},
+					"release_year": {
+						"type": "string"
+					},
+					"rental_duration": {
+						"type": "string"
+					},
+					"rental_rate": {
+						"type": "string"
+					},
+					"length": {
+						"type": "string"
+					},
+					"replacement_cost": {
+						"type": "string"
+					},
+					"actor": {
+						"items": {
+							"$ref": "#/components/schemas/ActorData1"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"_id",
+					"title",
+					"description",
+					"language",
+					"release_year",
+					"rental_duration",
+					"rental_rate",
+					"length",
+					"replacement_cost",
+					"actor"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateReqFilm": {
+				"properties": {
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"language": {
+						"type": "string"
+					},
+					"release_year": {
+						"type": "string"
+					},
+					"rental_duration": {
+						"type": "string"
+					},
+					"rental_rate": {
+						"type": "string"
+					},
+					"length": {
+						"type": "string"
+					},
+					"replacement_cost": {
+						"type": "string"
+					},
+					"actor": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"title",
+					"description",
+					"language",
+					"release_year",
+					"rental_duration",
+					"rental_rate",
+					"length",
+					"replacement_cost",
+					"actor"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResCustomer": {
+				"properties": {
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"active": {
+						"type": "number",
+						"enum": [
+							"1"
+						],
+						"nullable": false
+					}
+				},
+				"required": [
+					"firstName",
+					"lastName",
+					"email",
+					"password",
+					"address",
+					"active"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReqCustomer": {
+				"properties": {
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"firstName",
+					"lastName",
+					"email",
+					"password",
+					"address"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResStaff": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"paymentId": {
+						"type": "string"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"store": {
+						"type": "string"
+					},
+					"picUrl": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"paymentId",
+					"firstName",
+					"lastName",
+					"email",
+					"password",
+					"address",
+					"store",
+					"picUrl"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReqStaff": {
+				"properties": {
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"store": {
+						"type": "string"
+					},
+					"picUrl": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"firstName",
+					"lastName",
+					"email",
+					"password",
+					"address",
+					"store",
+					"picUrl"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResRental": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"customerId": {
+						"type": "string"
+					},
+					"staffId": {
+						"type": "string"
+					},
+					"filmId": {
+						"type": "string"
+					},
+					"rentalDate": {
+						"type": "string"
+					},
+					"returnDate": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"customerId",
+					"staffId",
+					"filmId",
+					"rentalDate",
+					"returnDate"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReqRental": {
+				"properties": {
+					"customerId": {
+						"type": "string"
+					},
+					"staffId": {
+						"type": "string"
+					},
+					"filmId": {
+						"type": "string"
+					},
+					"rentalDate": {
+						"type": "string"
+					},
+					"returnDate": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"customerId",
+					"staffId",
+					"filmId",
+					"rentalDate",
+					"returnDate"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResPayment": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"rentalId": {
+						"type": "string"
+					},
+					"staffId": {
+						"type": "string"
+					},
+					"customerId": {
+						"type": "string"
+					},
+					"amount": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"rentalId",
+					"staffId",
+					"customerId",
+					"amount"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReqPayment": {
+				"properties": {
+					"rentalId": {
+						"type": "string"
+					},
+					"staffId": {
+						"type": "string"
+					},
+					"customerId": {
+						"type": "string"
+					},
+					"amount": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"rentalId",
+					"staffId",
+					"customerId",
+					"amount"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetPaymentById": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "access_token",
+				"in": "query"
+			},
+			"jwt": {
+				"type": "http",
+				"scheme": "Bearer",
+				"name": "Authorization",
+				"in": "header"
+			},
+			"paths": {
+				"/region/upload-image": {
+					"post": {
+						"consumes": [
+							"multipart/form-data"
+						],
+						"parameters": [
+							{
+								"in": "formData",
+								"name": "image",
+								"required": true,
+								"type": "file"
+							}
+						]
+					}
+				}
+			}
+		}
+	},
+	"info": {
+		"title": "swaggerapis2",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/admin/register": {
+			"post": {
+				"operationId": "SaveAdmin",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveUpdateResAdmin"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegisterReqAdmin"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/category": {
+			"post": {
+				"operationId": "SaveCategory",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResCategory"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Category"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/actor": {
+			"post": {
+				"operationId": "SaveActor",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResActor"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Actors"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/film": {
+			"post": {
+				"operationId": "SaveFilm",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaveUpdateResFilm"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateReqFilm"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/register": {
+			"post": {
+				"operationId": "SaveCustomer",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResCustomer"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"user"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ReqCustomer"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/staff": {
+			"post": {
+				"operationId": "SaveStaffData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResStaff"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"user"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ReqStaff"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/rental": {
+			"post": {
+				"operationId": "SaveRentalData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResRental"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"user"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ReqRental"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/payment": {
+			"post": {
+				"operationId": "SavePaymentData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResPayment"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"user"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ReqPayment"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/getSinglePayment": {
+			"post": {
+				"operationId": "GetPaymentData",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResPayment"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"user"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GetPaymentById"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/user/getAllPayment": {
+			"get": {
+				"operationId": "GetPaymentAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResPayment"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"user"
+				],
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
